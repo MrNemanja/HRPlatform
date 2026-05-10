@@ -20,6 +20,16 @@ namespace HRPlatform.Repositories
         {
             return await _context.Candidates.Include(c => c.Skills).FirstOrDefaultAsync(c => c.Id == candidateId);
         }
+        public async Task<Candidate?> GetCandidateByEmailAsync(string email)
+        {
+            return await _context.Candidates.Include(c => c.Skills).FirstOrDefaultAsync(c => c.Email == email);
+        }
+        public async Task<Candidate?> GetCandidateByContactNumberAsync(string contactNumber)
+        {
+            return await _context.Candidates.
+                Include(c => c.Skills).
+                FirstOrDefaultAsync(c => c.ContactNumber == contactNumber);
+        }
         public async Task<Candidate> AddCandidateAsync(Candidate candidate)
         {
             _context.Candidates.Add(candidate);
@@ -27,29 +37,15 @@ namespace HRPlatform.Repositories
 
             return candidate;
         }
-        public async Task DeleteCandidate(Candidate candidate)
+        public async Task DeleteCandidateAsync(Candidate candidate)
         {
             _context.Candidates.Remove(candidate);
             await _context.SaveChangesAsync();
-        }
-        public async Task<List<Skill>> GetSkillsAsync()
-        {
-            return await _context.Skills.ToListAsync();
-        }
-        public async Task<Skill?> GetSkillAsync(int skillId)
-        {
-            return await _context.Skills.FirstOrDefaultAsync(s => s.Id == skillId);
-        }
-        public async Task<Skill> AddSkillAsync(Skill skill)
-        {
-            _context.Skills.Add(skill);
-            await _context.SaveChangesAsync();
-            
-            return skill;
         }
         public async Task SaveCandidatesDataAsync()
         { 
             await _context.SaveChangesAsync();
         }
+
     }
 }

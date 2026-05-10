@@ -11,13 +11,13 @@ namespace HRPlatform.Repositories
         {
             _context = context;
         }
-        public async Task<List<Skill>> GetSkillsAsync()
-        {
-            return await _context.Skills.ToListAsync();
-        }
         public async Task<Skill?> GetSkillAsync(int skillId)
         {
             return await _context.Skills.FirstOrDefaultAsync(s => s.Id == skillId);
+        }
+        public async Task<Skill?> GetSkillByNameAsync(string skillName)
+        {
+            return await _context.Skills.FirstOrDefaultAsync(s => s.Name == skillName);
         }
         public async Task<Skill> AddSkillAsync(Skill skill)
         {
@@ -25,10 +25,6 @@ namespace HRPlatform.Repositories
             await _context.SaveChangesAsync();
 
             return skill;
-        }
-        public async Task SaveSkillsDataAsync()
-        {
-            await _context.SaveChangesAsync();
         }
     }
 }

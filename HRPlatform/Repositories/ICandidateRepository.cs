@@ -7,8 +7,10 @@ namespace HRPlatform.Repositories
     {
         Task<List<Candidate>> GetCandidatesAsync();
         Task<Candidate?> GetCandidateAsync(int candidateId);
+        Task<Candidate?> GetCandidateByEmailAsync(string email);
+        Task<Candidate?> GetCandidateByContactNumberAsync(string contactNumber);
         Task<Candidate> AddCandidateAsync(Candidate candidate);
-        Task DeleteCandidate(Candidate candidate);
+        Task DeleteCandidateAsync(Candidate candidate);
         Task SaveCandidatesDataAsync();
 
     }

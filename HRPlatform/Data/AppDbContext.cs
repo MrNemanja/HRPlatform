@@ -13,6 +13,7 @@ namespace HRPlatform.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Candidate>().HasIndex(c => c.Email).IsUnique();
+            modelBuilder.Entity<Candidate>().HasIndex(c => c.ContactNumber).IsUnique();
             modelBuilder.Entity<Skill>().HasIndex(skill => skill.Name).IsUnique();
         }
 
