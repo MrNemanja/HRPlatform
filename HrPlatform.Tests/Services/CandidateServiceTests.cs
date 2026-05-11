@@ -193,13 +193,13 @@ namespace HRPlatform.Tests.Services
         public async Task AddSkillToCandidate_ShouldAddSkill_WhenValid()
         {
             //Arrange
-            var candidate = new Candidate
+            Candidate candidate = new Candidate
             {
                 Id = 1,
                 Skills = new List<Skill>()
             };
 
-            var skill = new Skill { Id = 1, Name = "C#" };
+            Skill skill = new Skill { Id = 1, Name = "C#" };
 
             _candidateRepoMock.Setup(x => x.GetCandidateAsync(1)).ReturnsAsync(candidate);
             _skillRepoMock.Setup(x => x.GetSkillAsync(1)).ReturnsAsync(skill);
@@ -216,9 +216,9 @@ namespace HRPlatform.Tests.Services
         public async Task AddSkillToCandidate_ShouldThrowException_WhenSkillAlreadyExists()
         {
             //Arrange
-            var skill = new Skill { Id = 1 };
+            Skill skill = new Skill { Id = 1 };
 
-            var candidate = new Candidate
+            Candidate candidate = new Candidate
             {
                 Id = 1,
                 Skills = new List<Skill> { skill }
@@ -275,9 +275,9 @@ namespace HRPlatform.Tests.Services
         public async Task RemoveSkillFromCandidate_ShouldRemoveSkill_WhenExists()
         {
             //Arrange
-            var skill = new Skill { Id = 1 };
+            Skill skill = new Skill { Id = 1 };
 
-            var candidate = new Candidate
+            Candidate candidate = new Candidate
             {
                 Id = 1,
                 Skills = new List<Skill> { skill }
@@ -313,7 +313,7 @@ namespace HRPlatform.Tests.Services
         public async Task RemoveSkillFromCandidate_ShouldThrowException_WhenSkillNotFound()
         {
             //Arrange
-            var candidate = new Candidate { Id = 1, Skills = new List<Skill>() };
+            Candidate candidate = new Candidate { Id = 1, Skills = new List<Skill>() };
 
             _candidateRepoMock.Setup(x => x.GetCandidateAsync(1)).ReturnsAsync(candidate);
             _skillRepoMock.Setup(x => x.GetSkillAsync(1)).ReturnsAsync((Skill)null);
@@ -329,13 +329,13 @@ namespace HRPlatform.Tests.Services
         public async Task RemoveSkillFromCandidate_ShouldThrowException_WhenSkillNotAssigned()
         {
             //Arrange
-            var candidate = new Candidate
+            Candidate candidate = new Candidate
             {
                 Id = 1,
                 Skills = new List<Skill>()
             };
 
-            var skill = new Skill { Id = 1 };
+            Skill skill = new Skill { Id = 1 };
 
             _candidateRepoMock.Setup(x => x.GetCandidateAsync(1)).ReturnsAsync(candidate);
             _skillRepoMock.Setup(x => x.GetSkillAsync(1)).ReturnsAsync(skill);
@@ -423,7 +423,5 @@ namespace HRPlatform.Tests.Services
             //Assert
             Assert.Empty(result);
         }
-
-
     }
 }
