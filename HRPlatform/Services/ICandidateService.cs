@@ -2,7 +2,7 @@
 
 namespace HRPlatform.Services
 {
-    public interface ICandidateSkillService
+    public interface ICandidateService
     {
         Task<CandidateDTO> AddCandidateAsync(CreateCandidateDTO candidateDTO);
         Task DeleteCandidateAsync (int candidateId);

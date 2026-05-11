@@ -1,7 +1,7 @@
 ﻿using HRPlatform.DTOs;
 using HRPlatform.Models;
 
-namespace HRPlatform.Mapper
+namespace HRPlatform.Mappers
 {
     public static class CandidateMapper
     {

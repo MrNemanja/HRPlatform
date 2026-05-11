@@ -1,5 +1,5 @@
 ﻿using HRPlatform.DTOs;
-using HRPlatform.Mapper;
+using HRPlatform.Mappers;
 using HRPlatform.Models;
 using HRPlatform.Repositories;
 
@@ -52,7 +52,7 @@ namespace HRPlatform.Services
 
             if(candidate.Skills.Any(s => s.Id == skillId))
             {
-                throw new InvalidOperationException("This skill is already assigned to this candidate");
+                throw new InvalidOperationException("This skill is already assigned to this candidate.");
             }
 
             candidate.Skills.Add(skill);

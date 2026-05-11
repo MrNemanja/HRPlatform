@@ -1,5 +1,5 @@
 ﻿using HRPlatform.DTOs;
-using HRPlatform.Mapper;
+using HRPlatform.Mappers;
 using HRPlatform.Models;
 using HRPlatform.Repositories;
 
